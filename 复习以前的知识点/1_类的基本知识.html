@@ -20,13 +20,13 @@
         // 构造器方法
         constructor(name, age) {
           // 构造器中的this是：类的实例对象
-          this.name = name;
-          this.age = age;
+          this.name = name
+          this.age = age
         }
         speak() {
           // speak方法放在了原型对象上，供实例使用
           // 通过person实例调用speak方法时，this就是person实例
-          console.log(`我的名字是${this.name}，我的年龄为${this.age}`);
+          console.log(`我的名字是${this.name}，我的年龄为${this.age}`)
         }
       }
       // 创建一个person的实例对象
@@ -41,37 +41,36 @@
       // 继承Person类
       class Student extends Person {
         constructor(name, age, grade) {
-          super(name, age);
-          this.grade = grade;
+          super(name, age)
+          this.grade = grade
         }
         speak() {
-          console.log(
-            `我的名字是${this.name}，我的年龄为${this.age},我的年龄是${this.grade}`
-          );
+          console.log(`我的名字是${this.name}，我的年龄为${this.age},我的年龄是${this.grade}`)
         }
         study() {
           // study方法放在了原型对象上，供实例使用
           // 通过Student实例调用study方法时，this就是Student实例
-          console.log("xdnjcknsd");
+          console.log('xdnjcknsd')
         }
       }
-      const s1 = new Student("tom22", 17, "高二");
-      console.log(s1);
-      s1.speak();
+      const s1 = new Student('tom22', 17, '高二')
+      console.log(s1)
+      s1.speak()
 
       class Car {
         constructor(name, age) {
-          this.name = name;
-          this.age = age;
+          this.name = name
+          this.age = age
         }
         // 类中可以直接写赋值语句，如下代码的含义是：给Car的实例对象添加一个属性，名为a，值为1
-        a = 1;
-        wheel = 4;
+        a = 1
+        wheel = 4
+        static demo = 100
       }
-      const c1 = new Car("奔驰c63", 199);
-      const c2 = new Car("宝马", 299);
-      console.log(c1);
-      console.log(c2);
+      const c1 = new Car('奔驰c63', 199)
+      const c2 = new Car('宝马', 299)
+      console.log(c1)
+      console.log(Car.demo)
     </script>
   </body>
 </html>
