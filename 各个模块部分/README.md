@@ -102,7 +102,7 @@
 
 ![排序算法比较](img/sort-compare.png)
 
-### 前端需要注意哪些 SEO
+### 前端需要注意哪些 SEO  ------> Search Engine Optimization（搜索引擎优化）
 
 1. 合理的 title、description、keywords：搜索对着三项的权重逐个减小，title 值强调重点即可，重要关键词出现不要超过 2 次，而且要靠前，不同页面 title 要有所不同；description 把页面内容高度概括，长度合适，不可过分堆砌关键词，不同页面 description 有所不同；keywords 列举出重要关键词即可
 2. 语义化的 HTML 代码，符合 W3C 规范：语义化代码让搜索引擎容易理解网页
@@ -1076,7 +1076,7 @@ z 轴上的默认层叠顺序如下（从下到上）：
 例子：鼠标从 div#target 元素移出时进行处理，判断逻辑如下：
 
     <div id="target"><span>test</span></div>
-
+    
     <script type="text/javascript">
     var target = document.getElementById('target');
     if (target.addEventListener) {
@@ -1084,31 +1084,31 @@ z 轴上的默认层叠顺序如下（从下到上）：
     } else if (target.attachEvent) {
       target.attachEvent('onmouseout', mouseoutHandler);
     }
-
+    
     function mouseoutHandler(e) {
       e = e || window.event;
       var target = e.target || e.srcElement;
-
+    
       // 判断移出鼠标的元素是否为目标元素
       if (target.id !== 'target') {
         return;
       }
-
+    
       // 判断鼠标是移出元素还是移到子元素
       var relatedTarget = event.relatedTarget || e.toElement;
       while (relatedTarget !== target
         && relatedTarget.nodeName.toUpperCase() !== 'BODY') {
         relatedTarget = relatedTarget.parentNode;
       }
-
+    
       // 如果相等，说明鼠标在元素内部移动
       if (relatedTarget === target) {
         return;
       }
-
+    
       // 执行需要操作
       //alert('鼠标移出');
-
+    
     }
     </script>
 
@@ -1579,46 +1579,46 @@ obj.postC('checkfy');
 
     function deepClone(obj) {
         var _toString = Object.prototype.toString;
-
+    
         // null, undefined, non-object, function
         if (!obj || typeof obj !== 'object') {
             return obj;
         }
-
+    
         // DOM Node
         if (obj.nodeType && 'cloneNode' in obj) {
             return obj.cloneNode(true);
         }
-
+    
         // Date
         if (_toString.call(obj) === '[object Date]') {
             return new Date(obj.getTime());
         }
-
+    
         // RegExp
         if (_toString.call(obj) === '[object RegExp]') {
             var flags = [];
             if (obj.global) { flags.push('g'); }
             if (obj.multiline) { flags.push('m'); }
             if (obj.ignoreCase) { flags.push('i'); }
-
+    
             return new RegExp(obj.source, flags.join(''));
         }
-
+    
         var result = Array.isArray(obj) ? [] :
             obj.constructor ? new obj.constructor() : {};
-
+    
         for (var key in obj ) {
             result[key] = deepClone(obj[key]);
         }
-
+    
         return result;
     }
-
+    
     function A() {
         this.a = a;
     }
-
+    
     var a = {
         name: 'qiu',
         birth: new Date(),
@@ -1626,7 +1626,7 @@ obj.postC('checkfy');
         container: document.body,
         hobbys: ['book', new Date(), /aaa/gim, 111]
     };
-
+    
     var c = new A();
     var b = deepClone(c);
     console.log(c.a === b.a);
@@ -1641,20 +1641,20 @@ obj.postC('checkfy');
         <title>TEst</title>
     </head>
     <body>
-
+    
     <div>
        <input type="button" id ="button1" value="1" />
        <input type="button" id ="button2" value="2" />
     </div>
-
+    
     <script type="text/javascript">
         var btn1 = document.getElementById('button1');
         var btn2 = document.getElementById('button2');
-
+    
         addListener(btn1, 'click', function (event) {
             btn1.parentNode.insertBefore(btn2, btn1);
         });
-
+    
         function addListener(elem, type, handler) {
             if (elem.addEventListener) {
                 elem.addEventListener(type, handler, false);
@@ -1669,7 +1669,7 @@ obj.postC('checkfy');
                 return wrapper;
             }
         }
-
+    
     </script>
     </body>
     </html>
@@ -1683,7 +1683,7 @@ obj.postC('checkfy');
         <title>TEst</title>
     </head>
     <body>
-
+    
         <span id="target"></span>
 
 
@@ -1693,21 +1693,21 @@ obj.postC('checkfy');
             var start = new Date();
             var end = new Date(start.getFullYear() + 1, 0, 1);
             var elapse = Math.floor((end - start) / 1000);
-
+    
             var seconds = elapse % 60 ;
             var minutes = Math.floor(elapse / 60) % 60;
             var hours = Math.floor(elapse / (60 * 60)) % 24;
             var days = Math.floor(elapse / (60 * 60 * 24)) % 30;
             var months = Math.floor(elapse / (60 * 60 * 24 * 30)) % 12;
             var years = Math.floor(elapse / (60 * 60 * 24 * 30 * 12));
-
+    
             return start.getFullYear() + '年还剩' + years + '年' + months + '月' + days + '日'
                 + hours + '小时' + minutes + '分' + seconds + '秒';
         }
-
+    
         function domText(elem, text) {
             if (text == undefined) {
-
+    
                 if (elem.textContent) {
                     return elem.textContent;
                 } else if (elem.innerText) {
@@ -1723,14 +1723,14 @@ obj.postC('checkfy');
                 }
             }
         }
-
+    
         var target = document.getElementById('target');
-
+    
         setInterval(function () {
             domText(target, getTimeString());
         }, 1000)
     </script>
-
+    
     </body>
     </html>
 
@@ -2017,7 +2017,7 @@ function getViewportSize(w) {
                 y: w.pageYOffset
             };
         }
-
+    
         // 老版本IE，根据兼容性不同访问不同元素
         var d = w.document;
         if (d.compatMode === 'CSS1Compat') {
@@ -2026,7 +2026,7 @@ function getViewportSize(w) {
                 y: d.documentElement.scrollTop
             }
         }
-
+    
         return {
             x: d.body.scrollLeft,
             y: d.body.scrollTop
@@ -2040,13 +2040,13 @@ function getViewportSize(w) {
         div.innerHTML = text;
         var p = div.getElementsByTagName('p');
         var i, len;
-
+    
         for (i = 0, len = p.length; i < len; ++i) {
             if (p[i].getElementsByTagName('img').length === 1) {
                 p[i].classList.add('pic');
             }
         }
-
+    
         return div.innerHTML;
     }
 
@@ -2062,13 +2062,13 @@ function getViewportSize(w) {
         this_callbacks = this._callbacks || {};
         this._callbacks[type] = this.callbacks[type] || [];
         this._callbacks[type].push(handler);
-
+    
         return this;
     };
-
+    
     Event.prototype.off = function (type, handler) {
         var list = this._callbacks[type];
-
+    
         if (list) {
             for (var i = list.length; i >= 0; --i) {
                 if (list[i] === handler) {
@@ -2076,23 +2076,23 @@ function getViewportSize(w) {
                 }
             }
         }
-
+    
         return this;
     };
-
+    
     Event.prototype.trigger = function (type, data) {
         var list = this._callbacks[type];
-
+    
         if (list) {
             for (var i = 0, len = list.length; i < len; ++i) {
                 list[i].call(this, data);
             }
         }
     };
-
+    
     Event.prototype.once = function (type, handler) {
         var self = this;
-
+    
         function wrapper() {
             handler.apply(self, arguments);
             self.off(type, wrapper);
@@ -2179,7 +2179,7 @@ define 部分定义一个简单的模板类，使用{}作为转义标记，中�
 
 
     <script>
-
+    
     /**
      * 将一个表单元素序列化为可提交的字符串
      *
@@ -2190,21 +2190,21 @@ define 部分定义一个简单的模板类，使用{}作为转义标记，中�
       if (!form || form.nodeName.toUpperCase() !== 'FORM') {
         return;
       }
-
+    
       var result = [];
-
+    
       var i, len;
       var field, fieldName, fieldType;
-
+    
       for (i = 0, len = form.length; i < len; ++i) {
         field = form.elements[i];
         fieldName = field.name;
         fieldType = field.type;
-
+    
         if (field.disabled || !fieldName) {
           continue;
         } // enf if
-
+    
         switch (fieldType) {
           case 'text':
           case 'password':
@@ -2213,7 +2213,7 @@ define 部分定义一个简单的模板类，使用{}作为转义标记，中�
             result.push(encodeURIComponent(fieldName) + '=' +
                 encodeURIComponent(field.value));
             break;
-
+    
           case 'radio':
           case 'checkbox':
             if (field.checked) {
@@ -2221,7 +2221,7 @@ define 部分定义一个简单的模板类，使用{}作为转义标记，中�
                 encodeURIComponent(field.value));
             }
             break;
-
+    
           case 'select-one':
           case 'select-multiple':
             for (var j = 0, jLen = field.options.length; j < jLen; ++j) {
@@ -2231,19 +2231,19 @@ define 部分定义一个简单的模板类，使用{}作为转义标记，中�
               }
             } // end for
             break;
-
+    
           case 'file':
           case 'submit':
             break; // 是否处理？
-
+    
           default:
             break;
         } // end switch
       } // end for
-
+    
         return result.join('&');
     }
-
+    
     var form = document.getElementById('target');
     console.log(serializeForm(form));
     </script>
